@@ -1,0 +1,128 @@
+клонировать репозиторий с github на локальный ПК с использованием HTTP
+git clone https://github.com/aleonids/group_22.git
+
+генерация SSH-ключа
+ssh-keygen -t rsa -C "leonidalejnkov"
+
+не вводить название файла, жать Enter
+перезаписать ключ (если уже был)
+вводим пароль, символы не отображаются
+зайти в папку, в которой создан SSH (c:\Users\Lenovo\.ssh\)
+открыть id_rsa.pub и скопировать содержимое
+На Github в настройках найти "SSH and GPG keys" и вставить ключ в поле "key" 
+
+Клонировать репозиторий на локальный ПК с использованием SSH
+git clone git@github.com:aleonids/group_22.git
+
+Чтобы Github не спрашивал наш user name и email, вводим 2 команды
+git config --global user.name "leonid alejnikov"
+git config --global user.email "aleonids@tut.by"
+
+Проверка правильности введеных переменных, 2 команды
+git config --global user.name
+git config --global user.email
+
+Создаем файл:
+touch filename.txt
+
+заходим в файл
+vim filename.txt
+
+Чтобы редактировать, нажать I
+Чтобы сохранить - esc :wq enter
+
+Проверяем созданные файлы. Локальные подсвечиваются красным.
+git status
+
+Чтобы отправить все файлы на удаленный репозиторий
+git add .
+
+Чтобы отправить конкретный файл на удаленный репозиторий
+git add filename.txt
+
+Файлы "позеленели", проверка
+git status
+
+Сделать git commit, "сфотографировать" состояние файла
+git commit -m "Linux-terminal-GitBash-commands" - в кавычках название
+
+отправить файлы
+git push
+
+
+Если локально вносить изменения в файлы, нужно их отправить на Github
+проверяем командой
+git status
+
+Измененные файлы подсвечены красным
+modified:   guide.txt
+
+команды:
+git add .
+git commit -a -m "Linux-terminal-GitBash-commands"
+git push
+
+отменить изменения в последенем шаге
+git reset HEAD`1
+
+Если изменения сделаны на Github, нужно синхронизировать с локальными файлами
+Проверяем командой
+git status
+
+видим, что изменений нет
+
+Команда получения с сервера 
+git fetch
+
+Далее синхронизируем файлы
+git pull (тоже самое что git fetch + git merge)
+
+
+
+----------------------------------------------------------------
+Создать ветку и сразу переключиться на нее
+git checkout -b new_branch
+
+Просто создать ветку и не переключаться на нее
+git branch [name] - название ветки
+
+Запушить все новые ветки сразу
+git push origin --all
+
+Переключаться между ветками
+git checkout master (вместо "мастер" название нужной ветки)
+:
+Чтобы залить изенения в основную ветку, нужно в нее перейти и прописать ветку, с которой нужно смерджить
+git merge new_branch
+
+если все хорошо, нужно отправить commit
+git push
+
+если были изменения на удаленном репозитории и при команде git push появляется ошибка, сначала команду
+git pull
+
+затем 
+git push
+
+Если бранчи раньше не было на удаленном репозитории
+git push origin -u new_branch [название бранчи]
+
+Если ветка не является родительской, то при команде 
+git merge new_branch
+
+Появитсчя окно с текстом
+Merge branch 'new_branch'
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+
+в нижней строке ":х" и  ентер
+
+Если работает несколько разработчиков и у каждого своя ветка https://youtu.be/SEvR78OhGtw?t=3419
+
+
+
+
+ 
